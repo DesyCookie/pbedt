@@ -1,17 +1,17 @@
 import java.util.*;
 import java.math.*;
 public class CFT_Row {
-    static Stack<Integer> n; // list of d-1 - dimensional featurepoints
-    static Stack<Integer> stack;
-    static int w;
-    static int v;
+    static Stack<TuplePoint> n; // list of d-1 - dimensional featurepoints
+    static Stack<TuplePoint> stack;
+    static TuplePoint w;
+    static TuplePoint v;
     static int c_vwx;
-    static int u;
+    static TuplePoint u;
     static int c_uvx;
-    static int cols;
+    static int cols = stack.size();
 
 
-    public static Stack<Integer> CFT_Row(Stack<Integer> stack){
+    public static Stack<TuplePoint> CFT_Row(Stack<TuplePoint> stack){
         while(!n.empty()){
             w = n.pop();
             if(stack.empty()){
@@ -19,15 +19,14 @@ public class CFT_Row {
             }
             else
                 v = stack.pop();
-                //TODO calculate c_vwx
-                c_vwx =
+                c_vwx = (((v.xcoordinate^2)-(w.xcoordinate^2)+(v.ycoordninate^2)+(w.ycoordninate^2))/2*(v.xcoordinate-w.xcoordinate));
                 u = stack.peek();
-                if(u == Integer.parseInt(null)){
+                if(u == null){
                     c_uvx = 0;
                 }
                 else{
                     //TODO calculate c_uvx
-
+                    c_uvx= (((v.xcoordinate^2)-(u.xcoordinate^2)+(v.ycoordninate^2)+(u.ycoordninate^2))/2*(v.xcoordinate-u.xcoordinate));
                 }
                 if(c_vwx<c_uvx){
                     //Pop(stack), add w back to the front of n
