@@ -8,10 +8,11 @@ public class CFT_Row {
     static int c_vwx;
     static TuplePoint u;
     static int c_uvx;
-    static int cols = stack.size();
+    static int cols;
 
 
     public static Stack<TuplePoint> CFT_Row(Stack<TuplePoint> stack){
+        cols = n.size();
         while(!n.empty()){
             w = n.pop();
             if(stack.empty()){
@@ -19,14 +20,13 @@ public class CFT_Row {
             }
             else
                 v = stack.pop();
-                c_vwx = (((v.xcoordinate^2)-(w.xcoordinate^2)+(v.ycoordninate^2)+(w.ycoordninate^2))/2*(v.xcoordinate-w.xcoordinate));
+                c_vwx = (((v.getXcoordinate()^2)-(w.getXcoordinate()^2)+(v.getYcoordninate()^2)+(w.getYcoordninate()^2))/2*(v.getXcoordinate()-w.getXcoordinate()));
                 u = stack.peek();
                 if(u == null){
                     c_uvx = 0;
                 }
                 else{
-                    //TODO calculate c_uvx
-                    c_uvx= (((v.xcoordinate^2)-(u.xcoordinate^2)+(v.ycoordninate^2)+(u.ycoordninate^2))/2*(v.xcoordinate-u.xcoordinate));
+                    c_uvx= (((v.getXcoordinate()^2)-(u.getXcoordinate()^2)+(v.getYcoordninate()^2)+(u.getYcoordninate()^2))/2*(v.getXcoordinate()-u.getXcoordinate()));
                 }
                 if(c_vwx<c_uvx){
                     //Pop(stack), add w back to the front of n
