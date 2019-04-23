@@ -1,11 +1,11 @@
 public class TuplePoint {
     private int xcoordinate; // X coordinate of the Point
-    private int ycoordninate; // Y coordinate of the point
+    private int ycoordinate; // Y coordinate of the point
     private int value;  //Value at that point
 
     public TuplePoint(int x, int y, int v){
         xcoordinate = x;
-        ycoordninate = y;
+        ycoordinate = y;
         value = v;
     }
 
@@ -13,11 +13,34 @@ public class TuplePoint {
         return xcoordinate;
     }
 
-    public int getYcoordninate(){
-        return ycoordninate;
+    public int getYcoordinate(){
+        return ycoordinate;
     }
 
     public int getValue() {
         return value;
     }
+
+    public void print(){
+        System.out.println(xcoordinate+ ycoordinate +value);
+    }
+
+    @Override
+    public String toString(){
+        return ("X: "+ String.valueOf(xcoordinate)+", Y: "+String.valueOf(ycoordinate)+ ", Value: "+String.valueOf(value));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        TuplePoint that = (TuplePoint)o;
+        if(xcoordinate==that.getXcoordinate()&& ycoordinate ==that.getYcoordinate()&&value==that.getValue()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+
 }

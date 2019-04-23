@@ -1,5 +1,4 @@
 import java.io.*;
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
@@ -7,9 +6,17 @@ import static javax.imageio.ImageIO.read;
 
 public class PictureToBinary
 {
-    public static void main(String args[]) throws IOException{
-        String path = PictureToBinary.class.getResource("Test_row_1x100.jpg").getFile();
-        File file= new File(path);
+
+    public static void main (String[] args){
+        try {
+            ConvertPicture("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static Stack<TuplePoint> ConvertPicture (String args) throws IOException{
+        //String path = PictureToBinary.class.getResource("Test_row_1x100.jpg").getFile();
+        File file= new File(args);// orig: File file= new File(path); working: File file = new File("build/resources/main/Test_row_1x100.jpg");
         BufferedImage image = read(file);
         Stack<TuplePoint> r = new Stack<>();
         Stack<TuplePoint> n = new Stack<>();
@@ -22,14 +29,16 @@ public class PictureToBinary
             TuplePoint a = new TuplePoint(x,y,1);
             n.push(a);
             r.push(a);
+
         }
         else{
             TuplePoint a = new TuplePoint(x,y,0);
             r.push(a);
         }
 
+
     }
 }
-System.out.println(r);
-        System.out.println(n);    }
+    return r;
+    }
 }
