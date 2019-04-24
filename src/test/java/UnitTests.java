@@ -85,4 +85,18 @@ public class UnitTests extends TestCase {
         }
         assertEquals(testStack, whiteBorder);
     }
+
+    public void testCFTRow(){
+        Stack<TuplePoint> cftTest = new Stack<>();
+        try {
+            cftTest = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\build\\resources\\main\\Test_row_1x100.jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stack<TuplePoint> a = new Stack<>();
+        Stack<TuplePoint> b = new Stack<>();
+        a = CFT_Row.CFT_Row_algorithm(cftTest);
+        b = CFT_Row.CFT_Row_algorithm(cftTest);
+        assertEquals(a,b);
+    }
 }

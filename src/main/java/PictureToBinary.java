@@ -18,8 +18,8 @@ public class PictureToBinary
         //String path = PictureToBinary.class.getResource("Test_row_1x100.jpg").getFile();
         File file= new File(args);// orig: File file= new File(path); working: File file = new File("build/resources/main/Test_row_1x100.jpg");
         BufferedImage image = read(file);
-        Stack<TuplePoint> r = new Stack<>();
-        Stack<TuplePoint> n = new Stack<>();
+        Stack<TuplePoint> r = new Stack<>(); //stack with all pixels
+        Stack<TuplePoint> n = new Stack<>(); //stack with featurepoints
 
         // Getting pixel color by position x and y
         for(int y = 0; y <image.getHeight(); y++){
