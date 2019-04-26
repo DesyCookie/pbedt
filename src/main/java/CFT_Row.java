@@ -4,7 +4,7 @@ import java.util.*;
 
 public class CFT_Row {
     static Stack<TuplePoint> n = new Stack<>(); // list of d-1 - dimensional featurepoints
-    static Stack<TuplePoint> stack = new Stack<>();
+
     static TuplePoint w;
     static TuplePoint v;
     static int c_vwx;
@@ -14,11 +14,16 @@ public class CFT_Row {
 
 
     public static Stack<TuplePoint> CFT_Row_algorithm (Stack<TuplePoint> r){
+        Stack<TuplePoint> stack = new Stack<>();
         for(int i =0;i<r.size();i++){ //take all featurepoints out of the complete list of points r
            if(r.elementAt(i).getValue()==1){
                n.push(r.elementAt(i)); //all featurepoints pushed into list n.
            }
         }
+        if (n.empty()){
+            System.out.println("There are no featurepoints in this image, please try a different onexxxxx");
+        }
+        else{}
         cols = r.size()-1;
         while(!n.empty()){
             w = n.pop();
@@ -49,7 +54,7 @@ public class CFT_Row {
                     stack.push(w);
                 }
         }
-        System.out.println(stack);
+        //System.out.println(stack);
         return stack;
     }
 }
