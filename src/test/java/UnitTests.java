@@ -5,6 +5,12 @@ import java.util.*;
 public class UnitTests extends TestCase {
 
 
+    /*┌─────────────────┐
+      │ PictureToBinary │
+      └─────────────────┘
+     */
+
+
     public void testPictureToBinaryblack() { //Tests PictureToBinary for an all black image.
         Stack<TuplePoint> testStack = new Stack<>(); //Test Stack to compare to, filled all black.
         for (int y = 0; y < 10; y++) {
@@ -86,11 +92,16 @@ public class UnitTests extends TestCase {
         assertEquals(testStack, whiteBorder);
     }
 
+    /*┌─────────────────┐
+      │     CFTRow      │
+      └─────────────────┘
+     */
+
     public void testCFTRowblack(){ // tests CFT_Row for an all black image.
-        Stack<TuplePoint> cftTest = new Stack<>();
+        Stack<TuplePoint> cftTest = new Stack<>(); //empty stack, because no feature points in a black image.
         Stack<TuplePoint> cftTestblack = new Stack<>();
         try {
-            cftTestblack = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_black.png");
+            cftTestblack = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_line_black.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +116,7 @@ public class UnitTests extends TestCase {
         Stack<TuplePoint> cftTest = new Stack<>();
         Stack<TuplePoint> cftTestwhite = new Stack<>();
         try {
-            cftTestwhite = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_white.png");
+            cftTestwhite = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test__line_white.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,7 +132,7 @@ public class UnitTests extends TestCase {
         Stack<TuplePoint> cftTest = new Stack<>();
         Stack<TuplePoint> cftTestwhiteborder = new Stack<>();
         try {
-            cftTestwhiteborder = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_white_border.png");
+            cftTestwhiteborder = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_line_white_border.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -135,12 +146,26 @@ public class UnitTests extends TestCase {
         Stack<TuplePoint> cftTest = new Stack<>();
         Stack<TuplePoint> cftTestblack = new Stack<>();
         try {
-            cftTestblack = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_black_border.png");
+            cftTestblack = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_line_black_border.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
         Stack<TuplePoint> a = CFT_Row.CFT_Row_algorithm(cftTest);
         Stack<TuplePoint> b = CFT_Row.CFT_Row_algorithm(cftTestblack);
+        assertEquals(a,b);
+    }
+
+
+    public void testCFTRowRandom(){//Tests CFT Row for an image with black border.
+        Stack<TuplePoint> cftTest = new Stack<>();
+        Stack<TuplePoint> cftTestRand = new Stack<>();
+        try {
+            cftTestRand = PictureToBinary.ConvertPicture("C:\\Users\\Désirée\\IdeaProjects\\pbedt\\src\\test\\resources\\Test_line_random.png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stack<TuplePoint> a = CFT_Row.CFT_Row_algorithm(cftTest);
+        Stack<TuplePoint> b = CFT_Row.CFT_Row_algorithm(cftTestRand);
         assertEquals(a,b);
     }
 }

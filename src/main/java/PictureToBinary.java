@@ -1,7 +1,6 @@
 import java.io.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
-
 import static javax.imageio.ImageIO.read;
 
 public class PictureToBinary
