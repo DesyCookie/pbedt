@@ -5,23 +5,24 @@ import java.util.*;
 public class CFT_Row {
     static Stack<TuplePoint> n = new Stack<>(); // list of d-1 - dimensional featurepoints
 
-    static TuplePoint w;
-    static TuplePoint v;
-    static int c_vwx;
-    static TuplePoint u;
-    static int c_uvx;
-    static int cols;
+
 
 
     public static Stack<TuplePoint> CFT_Row_algorithm (Stack<TuplePoint> r){
         Stack<TuplePoint> stack = new Stack<>();
+        TuplePoint w;
+        TuplePoint v;
+        int c_vwx  = 0;
+        TuplePoint u;
+        int c_uvx = 0;
+        int cols;
         for(int i =0;i<r.size();i++){ //take all featurepoints out of the complete list of points r
            if(r.elementAt(i).getValue()==1){
                n.push(r.elementAt(i)); //all featurepoints pushed into list n.
            }
         }
         if (n.empty()){
-            System.out.println("There are no featurepoints in this image, please try a different onexxxxx");
+            System.out.println("There are no featurepoints in this image, please try a different one");
         }
         else{}
         cols = r.size()-1;

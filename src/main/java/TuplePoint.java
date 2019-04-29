@@ -13,12 +13,24 @@ public class TuplePoint {
         return xcoordinate;
     }
 
+    public void setXcoordinate(int xcoordinate) {
+        this.xcoordinate = xcoordinate;
+    }
+
     public int getYcoordinate(){
         return ycoordinate;
     }
 
+    public void setYcoordinate(int ycoordinate) {
+        this.ycoordinate = ycoordinate;
+    }
+
     public int getValue() {
         return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public void print(){
