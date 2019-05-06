@@ -6,25 +6,18 @@ public class PBEDT {
 
     static Stack<TuplePoint> n;
     static Stack<TuplePoint> stack;
-    public static void PBEDT(Stack<TuplePoint> I, int d, int k) {
-        if (k > 0) {
-            PBEDT(I, d, k - 1);
-        }
-
-        Stack<TuplePoint> temp = new Stack<TuplePoint>();
-        Double x, cx, sd;
-
-        for (int i_k = 0; i_k < n[k]; i_k++) {
-            //sd = (Double)(I.get(coordinates).getValue());
-
-            if (sd < Double.POSITIVE_INFINITY) {
-                // LABEL A:
-                if (!temp.empty()) {
-                    cx =
-
-                    if (cx = )
-                }
-            }
-        }
+    public Stack<TuplePoint> PBEDT (int l, int d, int k, Stack<TuplePoint> n){
+    if(k>1){
+        PBEDT(l,d,k-1, n);
     }
-}
+    for(int i =1; i == d; i++){
+       for(int j = 1; j ==k+1; j++){
+           for(int h =1; h==k-1;h++){
+               for(int m = 1; m==l;m++){
+                   //CFT Row
+
+           }
+       }
+    }}
+
+return n;}}
