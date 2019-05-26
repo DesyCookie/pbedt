@@ -1,11 +1,14 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class PBEDT_2D {
 
-    int infinity = Integer.MAX_VALUE/2;
 
-    public static int distance(int ux, int vx, int dv){
+
+    static ArrayList<TuplePoint> points =new ArrayList<>();
+
+    public static int Distance(int ux, int vx, int dv){
         return ux*(ux-2*vx)+dv;
     }
 
@@ -18,15 +21,20 @@ public class PBEDT_2D {
         }
     }
 
-    public static void SquareDistance2D(Stack<TuplePoint> points, int rows, int cols){
+    public static void SquareDistance2D(String imageAddress, int rows, int cols){
+        try {
+            points = PictureToBinary.ConvertPicture(imageAddress);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         int cx;
         int m=rows; //rows
         int n=cols;//collumns
+        int[][] I = new int[m][n];
         for(int r=0; r ==m-1; r++){
-           ArrayList<TuplePoint> stack_c = new ArrayList<TuplePoint>();
-            ArrayList<TuplePoint>  stack_cx = new ArrayList<TuplePoint>();
-            ArrayList<TuplePoint>  stack_g = new ArrayList<TuplePoint>();
-
+           ArrayList<TuplePoint> stack_c = new ArrayList<>();
+            ArrayList<TuplePoint>  stack_cx = new ArrayList<>(); //image as an Arraylist
+            ArrayList<TuplePoint>  stack_g = new ArrayList<>();
            int p = -1;//point that is now being looked at
             for (int c=0;c==n-1;c++){
                 if(points.size() < Integer.MAX_VALUE){
@@ -47,9 +55,9 @@ public class PBEDT_2D {
                             else
                                 cx = -1;
                             p++;
-                            stack_c.get(p).setXcoordinate(c);
-                            stack_cx.get(p).setXcoordinate(cx);
-                            stack_g.get(p).setXcoordinate(points.size()); // NOPE
+                            stack_c.set(p,new TuplePoint(m,n,c)); //stack_c.get(p).setXcoordinate(c);
+                            stack_cx.set(p, new TuplePoint(m,n,cx)); //stack_cx.get(p).setXcoordinate(cx);
+                            stack_g.set(p, new TuplePoint(m,n, p)); //stack_g.get(p).setXcoordinate(p);
                             break;
                         }
                     if(p<0){
@@ -64,8 +72,8 @@ public class PBEDT_2D {
                             cx=stack_cx.get(k+1).getXcoordinate();
                         }
                         while(c<=cx){
-                            //I(r,c)= Distance(c, stack_c[k].getXcoordinate(), stack_g[k].getXcoordinate())
-                            c = c+1;
+                            I[r][c]= Distance(c, stack_c.get(k).getXcoordinate(), stack_g.get(k).getXcoordinate());
+                            c++;
                         }
                     }
                 }

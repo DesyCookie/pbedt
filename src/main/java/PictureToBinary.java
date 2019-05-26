@@ -13,12 +13,12 @@ public class PictureToBinary
             e.printStackTrace();
         }
     }
-    public static Stack<TuplePoint> ConvertPicture (String args) throws IOException{
+    public static ArrayList<TuplePoint> ConvertPicture (String args) throws IOException{
         //String path = PictureToBinary.class.getResource("Test_row_1x100.jpg").getFile();
         File file= new File(args);// orig: File file= new File(path); working: File file = new File("build/resources/main/Test_row_1x100.jpg");
         BufferedImage image = read(file);
-        Stack<TuplePoint> r = new Stack<>(); //stack with all pixels
-        Stack<TuplePoint> n = new Stack<>(); //stack with featurepoints
+        ArrayList<TuplePoint> r = new ArrayList<>(); //stack with all pixels
+        ArrayList<TuplePoint> n = new ArrayList<>(); //stack with featurepoints
 
         // Getting pixel color by position x and y
         for(int y = 0; y <image.getHeight(); y++){
@@ -26,13 +26,13 @@ public class PictureToBinary
         int clr=  image.getRGB(x,y);  // -1 = white, -16777216 = black
         if(clr == -1){
             TuplePoint a = new TuplePoint(x,y,1);
-            n.push(a);
-            r.push(a);
+            n.add(a);
+            r.add(a);
 
         }
         else{
             TuplePoint a = new TuplePoint(x,y,0);
-            r.push(a);
+            r.add(a);
         }
 
 
